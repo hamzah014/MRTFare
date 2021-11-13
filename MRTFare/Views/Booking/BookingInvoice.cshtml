@@ -1,0 +1,33 @@
+﻿@model MRTFare.Models.MRT
+
+@using (Html.BeginForm())
+{
+
+    <p>
+        <label>Booking ID :</label>
+        @Html.DisplayFor(x => x.BookingId)
+    </p>
+
+
+    <p>
+        <label>Origin :</label>
+        @Html.DisplayFor(x => x.DictStation[Model.IndexOrigin])
+    </p>
+
+    <p>
+        <label>Destination :</label>
+        @Html.DisplayFor(x => x.DictStation[Model.IndexDestination])
+    </p>
+
+
+    <p>
+        <label>Price Ticket :</label>
+        @Html.DisplayFor(x => x.ticketPrice)
+    </p>
+
+    <p>
+        @Html.ActionLink("Back to List", "Index", "", new { }, new { @class = "btn btn-warning" })
+    </p>
+
+
+}
