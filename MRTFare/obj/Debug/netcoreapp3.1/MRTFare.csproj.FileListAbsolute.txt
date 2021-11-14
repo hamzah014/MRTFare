@@ -37,3 +37,4 @@ E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\MRTFare.genruntimeconfig.c
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\MRTFare.csproj.CopyComplete
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingTicket.cshtml.g.cs
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingInvoice.cshtml.g.cs
+E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\LoginUser.cshtml.g.cs

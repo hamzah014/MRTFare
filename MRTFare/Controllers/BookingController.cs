@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
 using MRTFare.Models;
 
 namespace MRTFare.Controllers
@@ -20,6 +21,8 @@ namespace MRTFare.Controllers
         [HttpGet]
         public IActionResult BookingTicket()
         {
+            ViewBag.Userid = HttpContext.Session.GetInt32("userid");
+
             MRT mrt = new MRT();
 
             mrt.IndexOrigin = mrt.IndexDestination = mrt.IndexCategory = mrt.IndexTrip = -1;
