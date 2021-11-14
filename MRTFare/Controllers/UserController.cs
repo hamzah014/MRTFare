@@ -20,6 +20,51 @@ namespace MRTFare.Controllers
             this.configuration = config;
         }
 
+        public IList<Users> GetUserList()
+        {
+            IList<Users> userlist = new List<Users>();
+
+
+            SqlConnection conn = new SqlConnection(configuration.GetConnectionString("MrtConnStr"));
+
+            string sqlcmd = @"SELECT * FROM Users";
+
+            SqlCommand cmd = new SqlCommand(sqlcmd, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userlist.Add(
+                                new Users()
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Email = reader.GetString(1),
+                                    Name = reader.GetString(2),
+                                    IcNo = reader.GetString(3),
+                                    Password = reader.GetString(4),
+                                    Role = reader.GetString(5)
+                                }
+                              );
+                }
+
+            }
+            catch
+            {
+                RedirectToAction("Error");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return userlist;
+
+        } 
+
         public IActionResult Index()
         {
             return View();
@@ -28,9 +73,33 @@ namespace MRTFare.Controllers
         [HttpGet]
         public IActionResult LoginUser()
         {
-            //HttpContext.Session.SetInt32("userid", 1);
             Users users = new Users();
             return View(users);
+        }
+
+        [HttpPost]
+        public IActionResult LoginUser(Users users)
+        {
+            String email = users.Email;
+            String password = users.Password;
+
+            IList<Users> dbList = GetUserList();
+
+            var result = dbList.Where(x => x.Email == email && x.Password == password);
+
+            if (result.Count() == 0)
+            {
+                Console.WriteLine("apa ni 0");
+                return View("LoginUser");
+            }
+            else
+            {
+                int userid = result.FirstOrDefault().Id;
+                Console.WriteLine("id " + userid);
+                HttpContext.Session.SetInt32("userid", userid);
+                return RedirectToAction("Index", "Home");
+
+            }
         }
 
         [HttpGet]
@@ -43,8 +112,53 @@ namespace MRTFare.Controllers
         [HttpPost]
         public IActionResult RegisterUser(Users users)
         {
-            Console.WriteLine(users.Name);
-            return View("LoginUser",users);
+            if (ModelState.IsValid)
+            {
+
+                SqlConnection conn = new SqlConnection(configuration.GetConnectionString("MrtConnStr"));
+                SqlCommand cmd = new SqlCommand("spInsertUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                String userrole = "customer";
+
+                cmd.Parameters.AddWithValue("@email", users.Email);
+                cmd.Parameters.AddWithValue("@name", users.Name);
+                cmd.Parameters.AddWithValue("@icno", users.IcNo);
+                cmd.Parameters.AddWithValue("@password", users.Password);
+                cmd.Parameters.AddWithValue("@role", userrole);
+
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch
+                {
+                    return View(users);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                return View("LoginUser", users);
+            }
+            else
+            {
+                Console.WriteLine(users.Name);
+                return View(users);
+            }
         }
+
+
+        public IActionResult Logout() 
+        {
+            HttpContext.Session.Remove("userid");
+            return RedirectToAction("LoginUser");
+        }
+
+
     }
 }

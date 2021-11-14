@@ -6,21 +6,95 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace MRTFare.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration config)
         {
             _logger = logger;
+            this.configuration = config;
+        }
+
+
+
+        public IList<Users> GetUserList()
+        {
+            IList<Users> userlist = new List<Users>();
+
+
+            SqlConnection conn = new SqlConnection(configuration.GetConnectionString("MrtConnStr"));
+
+            string sqlcmd = @"SELECT * FROM Users";
+
+            SqlCommand cmd = new SqlCommand(sqlcmd, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userlist.Add(
+                                new Users()
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Email = reader.GetString(1),
+                                    Name = reader.GetString(2),
+                                    IcNo = reader.GetString(3),
+                                    Password = reader.GetString(4),
+                                    Role = reader.GetString(5)
+                                }
+                              );
+                }
+
+            }
+            catch
+            {
+                RedirectToAction("Error");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return userlist;
+
         }
 
         public IActionResult Index()
         {
+            
+            if (HttpContext.Session.GetInt32("userid") == null) 
+            {
+                ViewBag.Name = "Everyone";
+
+            }
+            else
+            {
+
+                int userid = (int)HttpContext.Session.GetInt32("userid");
+
+                IList<Users> dbList = GetUserList();
+
+                var result = dbList.Where(x => x.Id == userid);
+
+                ViewBag.UserId = userid;
+                ViewBag.Name = result.FirstOrDefault().Name;
+
+            }
+
             return View();
+
         }
 
         public IActionResult Privacy()

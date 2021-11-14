@@ -8,6 +8,9 @@ namespace MRTFare.Models
 {
     public class Users
     {
+
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Please enter your name.")]
         [Display(Name = "Name")]
         public String Name { get; set; }
