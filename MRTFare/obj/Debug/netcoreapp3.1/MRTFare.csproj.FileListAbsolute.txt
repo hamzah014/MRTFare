@@ -38,3 +38,10 @@ E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\MRTFare.csproj.CopyComplet
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingTicket.cshtml.g.cs
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingInvoice.cshtml.g.cs
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\LoginUser.cshtml.g.cs
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterUser.cshtml.g.cs
