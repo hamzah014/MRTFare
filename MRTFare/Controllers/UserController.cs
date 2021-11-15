@@ -86,7 +86,7 @@ namespace MRTFare.Controllers
             IList<Users> dbList = GetUserList();
 
             var result = dbList.Where(x => x.Email == email && x.Password == password);
-
+            
             if (result.Count() == 0)
             {
                 Console.WriteLine("apa ni 0");
@@ -96,9 +96,12 @@ namespace MRTFare.Controllers
             {
                 int userid = result.FirstOrDefault().Id;
                 Console.WriteLine("id " + userid);
-                HttpContext.Session.SetInt32("userid", userid);
-                return RedirectToAction("Index", "Home");
 
+                //set session for user
+                HttpContext.Session.SetInt32("userid", userid);
+                
+                return RedirectToAction("Index", "Home");
+            
             }
         }
 
@@ -136,14 +139,14 @@ namespace MRTFare.Controllers
                 }
                 catch
                 {
-                    return View(users);
+                    return View();
                 }
                 finally
                 {
                     conn.Close();
                 }
 
-                return View("LoginUser", users);
+                return RedirectToAction("LoginUser", "User");
             }
             else
             {

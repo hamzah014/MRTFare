@@ -1,54 +1,92 @@
-﻿@model MRTFare.Models.MRT
-
-<h3>hiii  @ViewBag.Userid</h3>
-
-<h4>Booking Ticket</h4>
-
-@using (Html.BeginForm())
-{
-    <h3>Ticket Information</h3>
-
-    <div class="row">
-
-
-        <p class="col-md-6">
-            <label>@Html.DisplayNameFor(x => x.IndexOrigin): </label>
-            @Html.DropDownListFor(x => x.IndexOrigin, new SelectList(Model.DictStation, "Key", "Value"), "Select Origin", new { @class = "form-control" })
-            <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexOrigin, "", new { @class = "text-danger" })</span>
-        </p>
-
-        <p class="col-md-6">
-            <label>@Html.DisplayNameFor(x => x.IndexDestination): </label>
-            @Html.DropDownListFor(x => x.IndexDestination, new SelectList(Model.DictStation, "Key", "Value"), "Select Destination", new { @class = "form-control" })
-            <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexDestination, "", new { @class = "text-danger" })</span>
-        </p>
-
-    </div>
-
-    <div class="row">
-
-
-        <p class="col-md-6">
-            <label>@Html.DisplayNameFor(x => x.IndexCategory): </label>
-            @Html.DropDownListFor(x => x.IndexCategory, new SelectList(Model.DictCategory, "Key", "Value"), "Select Category", new { @class = "form-control" })
-            <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexCategory, "", new { @class = "text-danger" })</span>
-        </p>
-
-        <p class="col-md-6">
-            <label>@Html.DisplayNameFor(x => x.IndexTrip): </label>
-            @Html.DropDownListFor(x => x.IndexTrip, new SelectList(Model.DictTrip, "Key", "Value"), "Select Trip", new { @class = "form-control" })
-            <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexTrip, "", new { @class = "text-danger" })</span>
-        </p>
-
-        <p class="col-md-6">
-            <label>@Html.DisplayNameFor(x => x.Quantity): </label>
-            @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
-        </p>
-
-    </div>
-
-    <p>
-        <input type="submit" value="Submit" class="btn btn-lg btn-primary" />
-    </p>
+﻿@{
+    ViewData["Title"] = "Booking";
 }
 
+
+@model MRTFare.Models.MRT
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-4 p-sm-5">
+                        <h2 class="card-title text-center mb-5 fw-light fs-5">Booking Ticket!</h2>
+                        @using (Html.BeginForm())
+                        {
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <label>@Html.DisplayNameFor(x => x.IndexOrigin): </label>
+                                        @Html.DropDownListFor(x => x.IndexOrigin, new SelectList(Model.DictStation, "Key", "Value"), "Select Origin", new { @class = "form-control" })
+                                        <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexOrigin, "", new { @class = "text-danger" })</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <label>@Html.DisplayNameFor(x => x.IndexDestination): </label>
+                                        @Html.DropDownListFor(x => x.IndexDestination, new SelectList(Model.DictStation, "Key", "Value"), "Select Destination", new { @class = "form-control" })
+                                        <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexDestination, "", new { @class = "text-danger" })</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <label>@Html.DisplayNameFor(x => x.IndexCategory): </label>
+                                        @Html.DropDownListFor(x => x.IndexCategory, new SelectList(Model.DictCategory, "Key", "Value"), "Select Category", new { @class = "form-control" })
+                                        <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexCategory, "", new { @class = "text-danger" })</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-6">
+
+                                    <div class="form-floating mb-3">
+                                        <label>@Html.DisplayNameFor(x => x.IndexTrip): </label>
+                                        @Html.DropDownListFor(x => x.IndexTrip, new SelectList(Model.DictTrip, "Key", "Value"), "Select Trip", new { @class = "form-control" })
+                                        <span class="errormsg">@Html.ValidationMessageFor(x => x.IndexTrip, "", new { @class = "text-danger" })</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+
+
+                                    <div class="form-floating mb-3">
+                                        <label>@Html.DisplayNameFor(x => x.Quantity): </label>
+                                        @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="d-grid mb-2">
+                                <input class="btn btn-md btn-success btn-login fw-bold text-uppercase" type="submit" value="Submit" />
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MRTFare.Models.Users>
+
+
+
+<body>
+
+
+    <hr />
+
+    <table class="table table-bordered">
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(y => x.Email)</td>
+                <td>@Html.DisplayFor(y => x.Name)</td>
+            </tr>
+        }
+
+    </table>
+
+</body>

@@ -58,9 +58,10 @@ namespace MRTFare.Controllers
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
                 RedirectToAction("Error");
+                Console.WriteLine(ex.Message);
             }
             finally
             {

@@ -1,4 +1,8 @@
-﻿@model MRTFare.Models.Users
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@model MRTFare.Models.Users
 
 
 <body>
@@ -20,12 +24,12 @@
                             </div>
 
                             <div class="form-floating mb-3">
-                                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Your Password" })
+                                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Your Password", @type = "password" })
                                 <span class="errormsg">@Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })</span>
                             </div>
 
                             <div class="d-grid mb-2">
-                                <input class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit" value="Login"/>
+                                <input class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit" value="Login" />
                             </div>
 
                             <a class="d-block text-center mt-2 small" asp-area="" asp-controller="User" asp-action="RegisterUser">Don't have an account yet? Sign Up</a>

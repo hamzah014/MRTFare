@@ -45,3 +45,4 @@ E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sn
 E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\C# Project\MRTFare\MRTFare\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterUser.cshtml.g.cs
+E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\TestView.cshtml.g.cs
