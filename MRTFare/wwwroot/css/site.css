@@ -70,3 +70,10 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+
+.card-img-booking {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: no-repeat center url('../img/ticket.jpg');
+    background-size: contain;
+}

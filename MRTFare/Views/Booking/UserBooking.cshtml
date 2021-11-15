@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "My Booking";
+}
+
+@model IEnumerable<MRTFare.Models.MRT>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+
+                @using (Html.BeginForm("SearchIndex", "PosLajuParcel", FormMethod.Get))
+                {
+                    <p>
+                        <label>Search by Booking ID : </label>
+                        @Html.TextBox("SearchString")
+
+                        <input type="submit" value="Search" />
+                        @Html.ActionLink("Back to Full List", "Index")
+                    </p>
+                }
+
+
+                <div class="table-responsive">
+                    <h2 class="card-title text-center mb-5 fw-light fs-5">My Booking List</h2>
+                    <table class="table table-responsive table-bordered">
+                        <thead>
+                            <tr class="bg-light text-center">
+                                <th scope="col">@Html.DisplayNameFor(x => x.BookingId)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.BookDateTime)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.IndexOrigin)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.IndexDestination)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.IndexCategory)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.IndexTrip)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.Quantity)</th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.totalPrice)</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr class="text-center">
+                                    <th scope="row">@Html.DisplayFor(y => x.ViewId)</th>
+                                    <td>@Html.DisplayFor(y => x.ViewDateTime)</td>
+                                    <td>@Html.DisplayFor(y => x.DictStation[x.IndexOrigin])</td>
+                                    <td>@Html.DisplayFor(y => x.DictStation[x.IndexDestination])</td>
+                                    <td>@Html.DisplayFor(y => x.DictCategory[x.IndexCategory])</td>
+                                    <td>@Html.DisplayFor(y => x.DictTrip[x.IndexTrip])</td>
+                                    <td>@Html.DisplayFor(y => x.Quantity)</td>
+                                    <td>RM @Html.DisplayFor(y => x.ViewTotalPrice)</td>
+                                    <td>
+                                        @Html.ActionLink("View Details", "Details", new { id = x.Id }, new { @class = "btn btn-md btn-primary" })
+                                        <button class="btn btn-md btn-success">Email Me!</button>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

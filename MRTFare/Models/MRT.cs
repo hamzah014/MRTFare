@@ -38,6 +38,9 @@ namespace MRTFare.Models
         [Display(Name = "Booking ID")]
         public String ViewId { get; set; }
 
+
+        public int Id { get; set; }
+
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "Please select origin station.")]
@@ -73,7 +76,7 @@ namespace MRTFare.Models
             }
 
             set { }
-        
+
         }
 
         [DisplayFormat(DataFormatString = "{0:n2}")]
@@ -101,6 +104,11 @@ namespace MRTFare.Models
         }
 
 
+        [DisplayFormat(DataFormatString = "{0:n2}")]
+        [Display(Name = "Total Price")]
+        public double ViewTotalPrice{get; set;}
+
+
         [Required]
         [Display(Name = "Category")]
         public IDictionary<int, String> DictCategory
@@ -122,8 +130,6 @@ namespace MRTFare.Models
             set { }
 
         }
-
-
 
         [Required]
         [Display(Name = "Trip")]
