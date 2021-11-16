@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Email Result";
+}
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-4 p-sm-5">
+                        <h2 class="card-title bg text-center mb-5 fw-light fs-5">Booking Ticket Email</h2>
+                        <div class="row">
+
+                            @if (ViewBag.Message == "success")
+                            {
+                                <div class="col-12 bg-info p-3 text-center">
+
+                                    <label>Booking Information has been successfully sent to your email.</label>
+                                    <hr />
+                                    <labels>Email : @ViewBag.Email</labels>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-12 bg-danger p-3 text-center">
+
+                                    <label>Booking Information failed send to your email.</label>
+                                    <label>Please try again.</label>
+                                    <hr />
+                                    <labels>Email : @ViewBag.Email</labels>
+
+                                </div>
+
+                            }
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <a class="btn btn-danger btn-md d-print-none" asp-area="" asp-controller="Home" asp-action="Index">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>

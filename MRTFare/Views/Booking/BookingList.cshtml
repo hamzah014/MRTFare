@@ -21,7 +21,7 @@
                             @Html.TextBox("SearchString")
 
                             <input class="btn btn-secondary" type="submit" value="Search" />
-                            @Html.ActionLink("Back to Full List", "UserBooking", new { }, new { @class="btn btn-info" })
+                            @Html.ActionLink("Back to Full List", "UserBooking", new { }, new { @class = "btn btn-info" })
                         </p>
                     }
 
@@ -53,10 +53,7 @@
                                     <td>@Html.DisplayFor(y => x.Quantity)</td>
                                     <td>RM @Html.DisplayFor(y => x.ViewTotalPrice)</td>
                                     <td>
-                                        @Html.ActionLink("Details", "Details", new { id = x.Id }, new { @class = "btn btn-md btn-primary" })
-                                        @Html.ActionLink("Edit", "Edit", new { id = x.Id }, new { @class = "btn btn-md btn-info" })
-                                        @Html.ActionLink("Email", "SendMail", new { id = x.Id }, new { @class = "btn btn-md btn-success" })
-                                        @Html.ActionLink("Delete", "Delete", new { id = x.Id }, new { @class = "btn btn-md btn-danger" })
+                                        @Html.ActionLink("Details", "BookingDetails", new { id = x.Id }, new { @class = "btn btn-md btn-primary" })
                                     </td>
                                 </tr>
 

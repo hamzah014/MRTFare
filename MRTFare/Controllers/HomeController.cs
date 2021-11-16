@@ -84,12 +84,14 @@ namespace MRTFare.Controllers
             {
 
                 int userid = (int)HttpContext.Session.GetInt32("userid");
+                String role = HttpContext.Session.GetString("role");
 
                 IList<Users> dbList = GetUserList();
 
                 var result = dbList.Where(x => x.Id == userid);
 
                 ViewBag.UserId = userid;
+                ViewBag.Role = role;
                 ViewBag.Name = result.FirstOrDefault().Name;
 
             }

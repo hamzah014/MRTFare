@@ -1,0 +1,131 @@
+﻿
+
+@{
+    ViewData["Title"] = "Delete Booking";
+}
+
+
+@model MRTFare.Models.MRT
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+
+                <div class="text-center">
+                    @using (Html.BeginForm())
+                    {
+                        <h2 class="card-title text-center mb-5 fw-light fs-5">Are you sure want to delete this booking?</h2>
+                        <input class="btn btn-lg btn-success" type="submit" value="Yes" />
+                        @Html.ActionLink("No", "UserBooking",new { }, new { @class = "btn btn-lg btn-danger" })
+                    }
+                </div>
+
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-4 p-sm-5">
+                        <h2 class="card-title text-center mb-5 fw-light fs-5">Booking Ticket Information!</h2>
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.BookingId): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.BookingId)</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.BookDateTime): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.BookDateTime)</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.IndexOrigin): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.DictStation[Model.IndexOrigin])</p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.IndexDestination): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.DictStation[Model.IndexDestination])</p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-4">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.IndexCategory): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.DictCategory[Model.IndexCategory])</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.IndexTrip): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.DictTrip[Model.IndexTrip])</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-floating mb-3">
+                                    <label>@Html.DisplayNameFor(x => x.Quantity): </label>
+                                    <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.Quantity)</p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-12">
+                                <div class="form-floating mb-3 text-left">
+                                    <label>@Html.DisplayNameFor(x => x.totalPrice): </label>
+                                    <p class="txtlabel bg-dark text-white">RM @Html.DisplayFor(x => x.totalPrice)</p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <a class="btn btn-danger btn-md" asp-area="" asp-controller="Booking" asp-action="UserBooking">Back to List</a>
+            </div>
+        </div>
+    </div>
+</body>

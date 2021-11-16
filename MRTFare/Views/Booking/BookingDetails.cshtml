@@ -12,17 +12,36 @@
         <div class="row">
             <div class="col-lg-10 col-xl-9 mx-auto">
                 <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-                    <div class="card-img-booking d-none d-md-flex">
-                        <!-- Background image for card set in CSS! -->
-                    </div>
                     <div class="card-body p-4 p-sm-5">
                         <h2 class="card-title text-center mb-5 fw-light fs-5">Booking Ticket Information!</h2>
                             <div class="row">
 
                                 <div class="col-6">
                                     <div class="form-floating mb-3">
+                                        <label>Customer Name: </label>
+                                        <p class="txtlabel bg-dark text-white">@ViewBag.Name</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <label>Customer Email: </label>
+                                        <p class="txtlabel bg-dark text-white">@ViewBag.Email</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
                                         <label>@Html.DisplayNameFor(x => x.BookingId): </label>
-                                        <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.BookingId)</p>
+                                        <p class="txtlabel bg-dark text-white">@Html.DisplayFor(x => x.ViewId)</p>
 
                                     </div>
 
@@ -116,15 +135,15 @@
                             <div class="row">
                                 <div class="col-12">
                                     <button onclick="window.print()" class="btn btn-md btn-primary d-print-none">Print</button>
-                                    @Html.ActionLink("Email Me!", "SendMail", new { id = Model.Id }, new { @class = "btn btn-md btn-success" })
+                                    @Html.ActionLink("Email", "SendMail", new { id = Model.Id }, new { @class = "btn btn-md btn-success d-print-none" })
                                 </div>
                             </div>
 
+                        </div>
 
-                    </div>
                 </div>
 
-                <a class="btn btn-danger btn-md d-print-none" asp-area="" asp-controller="Booking" asp-action="UserBooking">Back to List</a>
+                <a class="btn btn-danger btn-md d-print-none" asp-area="" asp-controller="Booking" asp-action="BookingList">Back to List</a>
             </div>
         </div>
     </div>

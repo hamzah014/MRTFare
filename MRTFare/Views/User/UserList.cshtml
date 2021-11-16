@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "User List";
+}
+
+@model IEnumerable<MRTFare.Models.Users>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto text-center">
+
+                <div class="table-responsive ">
+                    <h2 class="card-title text-center mb-5 fw-light fs-5">My Booking List</h2>
+
+                    <table class="table table-bordered" style="width:100%">
+                        <thead>
+                            <tr class="bg-light text-center">
+                                <th scope="col">@Html.DisplayNameFor(x => x.Email) </th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.Name)  </th>
+                                <th scope="col">@Html.DisplayNameFor(x => x.IcNo)  </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr class="text-justify">
+                                    <td>@Html.DisplayFor(y => x.Email) </td>
+                                    <td>@Html.DisplayFor(y => x.Name)  </td>
+                                    <td>@Html.DisplayFor(y => x.IcNo)  </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

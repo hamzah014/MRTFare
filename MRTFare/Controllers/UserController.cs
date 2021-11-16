@@ -95,11 +95,14 @@ namespace MRTFare.Controllers
             else
             {
                 int userid = result.FirstOrDefault().Id;
+                String role = result.FirstOrDefault().Role;
                 Console.WriteLine("id " + userid);
+                Console.WriteLine("role " + role);
 
                 //set session for user
                 HttpContext.Session.SetInt32("userid", userid);
-                
+                HttpContext.Session.SetString("role", role);
+
                 return RedirectToAction("Index", "Home");
             
             }
@@ -158,10 +161,36 @@ namespace MRTFare.Controllers
 
         public IActionResult Logout() 
         {
-            HttpContext.Session.Remove("userid");
+            HttpContext.Session.Clear();
             return RedirectToAction("LoginUser");
         }
 
+
+        public IActionResult UserList()
+        {
+
+
+            if (HttpContext.Session.GetInt32("userid") == null)
+            {
+                return RedirectToAction("Logout", "User");
+
+            }
+            else
+            {
+
+                int userid = (int)HttpContext.Session.GetInt32("userid");
+                String role = HttpContext.Session.GetString("role");
+
+                ViewBag.UserId = userid;
+                ViewBag.Role = role;
+
+                IList<Users> dbList = GetUserList();
+
+                var result = dbList.Where(x => x.Role == "customer");
+
+                return View(result);
+            }
+        }
 
     }
 }

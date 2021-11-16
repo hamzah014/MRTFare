@@ -203,7 +203,7 @@ namespace MRTFare.Models
                     { 25, "Bandar Tun Hussein Onn"},
                     { 26, "Batu Sebelas Cheras"},
                     { 27, "Bukit Dukung"},
-                    { 28, "Sungal Jernih"},
+                    { 28, "Sungai Jernih"},
                     { 29, "Stadium Kajang"},
                     { 30, "Kajang"},
                 };

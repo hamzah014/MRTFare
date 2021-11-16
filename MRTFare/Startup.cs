@@ -27,7 +27,7 @@ namespace MRTFare
 
             services.AddDistributedMemoryCache();
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+                options.IdleTimeout = TimeSpan.FromMinutes(10);//You can set Time   
             });
             services.AddMvc();
         }

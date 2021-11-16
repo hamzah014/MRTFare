@@ -74,6 +74,11 @@ body {
 .card-img-booking {
     width: 45%;
     /* Link to your background image using in the property below! */
-    background: no-repeat center url('../img/ticket.jpg');
-    background-size: contain;
+    background: no-repeat center url('../img/rapidkl.jpg');
+    background-size: cover;
+}
+
+* {
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    color-adjust: exact !important; /*Firefox*/
 }
