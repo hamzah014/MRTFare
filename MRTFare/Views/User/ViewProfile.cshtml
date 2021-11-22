@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "My Profile";
+}
+
+
+@model MRTFare.Models.Users
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-4 p-sm-5">
+                        <h2 class="card-title text-center mb-5 fw-light fs-5">My Profile!</h2>
+                        @using (Html.BeginForm())
+                        {
+                            <table class=" table">
+                                <tr>
+                                    <th>@Html.DisplayNameFor(x => x.Name)</th>
+                                    <td>@Html.TextBoxFor(x => x.Name, new { @class = "form-control" })</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(x => x.Email)</th>
+                                    <td>@Html.TextBoxFor(x => x.Email, new { @class = "form-control" })</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(x => x.IcNo)</th>
+                                    <td>@Html.TextBoxFor(x => x.IcNo, new { @class = "form-control"})</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(x => x.Password)</th>
+                                    <td>@Html.TextBoxFor(x => x.Password, new { @class = "form-control"})</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="d-grid mb-2">
+                                <input class="btn btn-md btn-success btn-login fw-bold text-uppercase" type="submit" value="Update" />
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

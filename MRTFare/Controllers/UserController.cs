@@ -192,5 +192,80 @@ namespace MRTFare.Controllers
             }
         }
 
+
+        [HttpGet]
+        public IActionResult ViewProfile()
+        {
+            if (HttpContext.Session.GetInt32("userid") == null)
+            {
+                return RedirectToAction("Logout", "User");
+
+            }
+            else
+            {
+
+                int userid = (int)HttpContext.Session.GetInt32("userid");
+
+                IList<Users> dbList = GetUserList();
+
+                var result = dbList.First(x => x.Id == userid);
+
+                ViewBag.UserId = userid;
+
+
+
+                return View(result);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ViewProfile(Users users)
+        {
+            if (HttpContext.Session.GetInt32("userid") == null)
+            {
+                return RedirectToAction("Logout", "User");
+
+            }
+            else
+            {
+
+                int userid = (int)HttpContext.Session.GetInt32("userid");
+
+
+                ViewBag.UserId = userid;
+
+                SqlConnection conn = new SqlConnection(configuration.GetConnectionString("MrtConnStr"));
+                SqlCommand cmd = new SqlCommand("spUpdateUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id", userid);
+                cmd.Parameters.AddWithValue("@email", users.Email);
+                cmd.Parameters.AddWithValue("@name", users.Name);
+                cmd.Parameters.AddWithValue("@icno", users.IcNo);
+                cmd.Parameters.AddWithValue("@password", users.Password);
+
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return View();
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                return View();
+
+            }
+        }
+
+
     }
 }

@@ -54,3 +54,4 @@ E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\Edit.c
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\UserList.cshtml.g.cs
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingList.cshtml.g.cs
 E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\Booking\BookingDetails.cshtml.g.cs
+E:\C# Project\MRTFare\MRTFare\obj\Debug\netcoreapp3.1\Razor\Views\User\ViewProfile.cshtml.g.cs
