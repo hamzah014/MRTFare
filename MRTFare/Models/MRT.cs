@@ -43,25 +43,23 @@ namespace MRTFare.Models
 
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Please select origin station.")]
+        [Required(ErrorMessage = "Please select origin.")]
         [Display(Name = "Origin")]
         public int IndexOrigin { get; set; }
 
-
-        [Required(ErrorMessage = "Please select destination station.")]
+        [Required(ErrorMessage = "Please select destination.")]
         [Display(Name = "Destination")]
         public int IndexDestination { get; set; }
 
-
-        [Required(ErrorMessage = "Please select origin station.")]
+        [Required(ErrorMessage = "Please select category.")]
         [Display(Name = "Category")]
         public int IndexCategory { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter quantity.")]
         [Display(Name = "Quantity")]
-        public int Quantity { get; set; }
+        public int Quantity { get; set;}
 
-        [Required]
+        [Required(ErrorMessage = "Please select trip.")]
         [Display(Name = "Trip")]
         public int IndexTrip { get; set; }
 
@@ -109,7 +107,6 @@ namespace MRTFare.Models
         public double ViewTotalPrice{get; set;}
 
 
-        [Required]
         [Display(Name = "Category")]
         public IDictionary<int, String> DictCategory
         {
@@ -131,7 +128,7 @@ namespace MRTFare.Models
 
         }
 
-        [Required]
+
         [Display(Name = "Trip")]
         public IDictionary<int, String> DictTrip
         {
@@ -168,7 +165,7 @@ namespace MRTFare.Models
             set { }
         }
 
-        [Required]
+
         [Display(Name = "Station")]
         public IDictionary<int, String> DictStation
         {
